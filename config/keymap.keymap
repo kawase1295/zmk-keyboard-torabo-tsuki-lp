@@ -17,20 +17,6 @@
         };
     };
 
-//追加分
-&zip_temp_layer {
-    require-prior-idle-ms = <300>;
-    excluded-positions = <XX YY ZZ>;   // ← レイヤー1のクリックキーのposition
-};
-
-&trackball_listener {
-    input-processors = <&zip_temp_layer 1 30000>;
-};
-
-&mkp_input_listener {
-    input-processors = <&zip_temp_layer 1 250>;
-};
-
     keymap {
         compatible = "zmk,keymap";
 
@@ -74,4 +60,21 @@
             >;
         };
     };
+};
+
+
+&zip_temp_layer {
+    require-prior-idle-ms = <300>;
+    excluded-positions = 
+        27 28 30 31 33 34   // マウスボタン
+        38 51 52 53 54 55 62 63 64 65   // 修飾キー(Ctrl+クリック等を使うなら)
+    >;
+};
+
+&trackball_listener {
+    input-processors = <&zip_temp_layer 1 30000>;
+};
+
+&mkp_input_listener {
+    input-processors = <&zip_temp_layer 1 250>;
 };
