@@ -3,6 +3,8 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/pointing.h>
+#include <input/processors.dtsi>
+#include <behaviors/mouse_keys.dtsi>
 
 / {
     combos {
@@ -14,6 +16,20 @@
             layers = <2>;
         };
     };
+
+//追加分
+&zip_temp_layer {
+    require-prior-idle-ms = <300>;
+    excluded-positions = <XX YY ZZ>;   // ← レイヤー1のクリックキーのposition
+};
+
+&trackball_listener {
+    input-processors = <&zip_temp_layer 1 30000>;
+};
+
+&mkp_input_listener {
+    input-processors = <&zip_temp_layer 1 250>;
+};
 
     keymap {
         compatible = "zmk,keymap";
