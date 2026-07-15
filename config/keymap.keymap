@@ -32,11 +32,11 @@
 
         layer_1 {
             bindings = <
-&trans  &trans  &trans  &trans     &trans     &trans                  &trans  &trans     &trans     &trans  &trans  &trans
-&trans  &trans  &trans  &trans     &trans     &trans                  &trans  &trans     &trans     &trans  &trans  &trans
-&trans  &trans  &trans  &mkp RCLK  &mkp LCLK  &trans  &trans  &trans  &trans  &mkp LCLK  &mkp RCLK  &trans  &trans  &trans
-&trans  &trans  &trans  &trans     &trans     &trans  &trans  &trans  &trans  &trans     &trans     &trans  &trans  &trans
-&trans  &trans  &trans  &trans     &trans     &trans  &trans  &trans  &trans  &trans     &trans     &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                  &trans          &trans         &trans     &trans    &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                  &trans          &msc SCRL_UP   &trans     &trans    &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &msc SCRL_LEFT  &mkp LCLK      &mkp RCLK  &mkp MB4  &mkp MB5  &msc SCRL_RIGHT
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans          &msc SCRL_DOWN  &trans    &trans    &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans          &trans         &trans     &trans    &trans  &trans
             >;
         };
 
@@ -65,9 +65,9 @@
 
 &zip_temp_layer {
     require-prior-idle-ms = <300>;
-    excluded-positions = 
-        27 28 30 31 33 34   // マウスボタン
-        38 51 52 53 54 55 62 63 64 65   // 修飾キー(Ctrl+クリック等を使うなら)
+    excluded-positions = <
+        19 32 33 34 35 36 37 47   // マウス操作キー(クリック・スクロール)
+        38 51 52 53 54 55 62 63 64 65   // 修飾キー(Ctrl+クリック等を使うため)
     >;
 };
 
