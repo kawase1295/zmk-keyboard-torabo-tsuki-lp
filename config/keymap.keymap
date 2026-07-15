@@ -3,9 +3,10 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/pointing.h>
-#include <input/processors.dtsi>
 #include <behaviors/mouse_keys.dtsi>
-#include <dt-bindings/zmk/input_transform.h>
+
+// マウス関連の独自設定（トラックボール反転・マウスレイヤー自動化）
+#include "mouse.dtsi"
 
 / {
     combos {
@@ -61,23 +62,4 @@
             >;
         };
     };
-};
-
-
-&zip_temp_layer {
-    require-prior-idle-ms = <300>;
-    excluded-positions = <
-        19 32 33 34 35 36 37 47   // マウス操作キー(クリック・スクロール)
-        38 51 52 53 54 55 62 63 64 65   // 修飾キー(Ctrl+クリック等を使うため)
-    >;
-};
-
-&pointing_listener {
-    input-processors =
-        <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
-        <&zip_temp_layer 1 30000>;
-};
-
-&mkp_input_listener {
-    input-processors = <&zip_temp_layer 1 250>;
 };
